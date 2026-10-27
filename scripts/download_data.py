@@ -3,7 +3,7 @@ import requests
 
 # L'URL du fichier restreint sur Borealis
 FILE_URL = "https://demo.borealisdata.ca/api/access/datafile/73270"
-DATA_DIR = "data"
+DATA_DIR = "data/raw"
 OUTPUT_FILE = os.path.join(DATA_DIR, "dataset.csv") 
 
 def download_data():    
