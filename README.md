@@ -81,7 +81,7 @@ Ce script génère des indicateurs de synthèse (moyennes, corrélations) et pro
 python analyze_data.py
 ```
 
-Résultats sauvegardés dans le dossier `data/results/`
+Résultats sauvegardés dans le dossier `results/`
 
 ## 🤝 Contribution
 
