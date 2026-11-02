@@ -9,6 +9,9 @@ __pycache__/
 # Data dowloaded
 data/
 
+# Results
+results/
+
 # Distribution / packaging
 .Python
 build/
