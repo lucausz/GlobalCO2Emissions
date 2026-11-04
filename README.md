@@ -60,7 +60,7 @@ Les scripts doivent être exécutés dans l'ordre suivant :
 Ce script se connecte à l'API Borealis pour télécharger les données brutes. Il est à excecuter en premier
 
 ```Bash
-python download_data.py
+python scripts/download_data.py
 ```
 
 Données sauvegardées dans : `data/raw/dataset.csv`
@@ -69,7 +69,7 @@ Données sauvegardées dans : `data/raw/dataset.csv`
 Ce script nettoie les données brutes (gestion des valeurs manquantes, formatage des colonnes, filtrage des données depuis 1950, suppression des données non attribuées à des pays précis).
 
 ```Bash
-python preprocess_data.py
+python scripts/process_data.py
 ```
 
 Données sauvegardées dans : `data/processed/dataset_cleaned.csv`
@@ -78,7 +78,7 @@ Données sauvegardées dans : `data/processed/dataset_cleaned.csv`
 Ce script génère des indicateurs de synthèse (moyennes, corrélations) et produit des graphiques pour répondre aux questions de recherche.
 
 ```Bash
-python analyze_data.py
+python scripts/analyze_data.py
 ```
 
 Résultats sauvegardés dans le dossier `results/`
