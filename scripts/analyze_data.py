@@ -17,15 +17,15 @@ def analyze_data():
     except FileNotFoundError:
         print("Erreur : Fichier introuvable. Lancez d'abord preprocess_data.py.")
         return
-
+    df_countries = df[df['iso'] != 'WLD'].copy()
     print("\n--- 1. CALCUL DES INDICATEURS ---")
     
     # Indicateur 1 : Statistiques groupées (Émissions mondiales totales par année)
-    global_emissions_per_year = df.groupby('year')['total'].sum()
+    global_emissions_per_year = df_countries.groupby('year')['total'].sum()
     print(f"-> Indicateur 1 : Les émissions mondiales sont passées de {global_emissions_per_year.iloc[0]:.0f} en {global_emissions_per_year.index[0]} à {global_emissions_per_year.iloc[-1]:.0f} en {global_emissions_per_year.index[-1]}.")
     
     # Indicateur 2 : Moyenne (Les 5 pays les plus émetteurs en 2020)
-    df_2020 = df[df['year'] == 2020]
+    df_2020 = df_countries[df_countries['year'] == 2020]
     top_5_2020 = df_2020.nlargest(5, 'total')[['country', 'total']]
     print(f"-> Indicateur 2 : Top 5 des émetteurs en 2020 :\n{top_5_2020.to_string(index=False)}")
     
@@ -38,7 +38,7 @@ def analyze_data():
 
     # Visualisation 1 : Évolution temporelle des sources d'émissions (Graphique en courbes)
     # On groupe par année et on somme les différentes sources
-    sources_per_year = df.groupby('year')[['coal', 'oil', 'gas']].sum()
+    sources_per_year = df_countries.groupby('year')[['coal', 'oil', 'gas']].sum()
     
     plt.figure(figsize=(10, 6))
     plt.plot(sources_per_year.index, sources_per_year['coal'], label='Charbon (Coal)', color='saddlebrown', linewidth=2)
